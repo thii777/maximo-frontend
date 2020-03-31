@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
+import { FiLogIn } from 'react-icons/fi'
 
 import { Container } from './styles';
 import api from '../../services/api'
@@ -14,7 +15,7 @@ export default function Signin() {
     async function handleLogin(e) {
         e.preventDefault()
         
-        if(!setEmail.length == [0]){
+        if(!setEmail.length === [0]){
             console.log("digite email e senha")
         }
         
@@ -32,32 +33,33 @@ export default function Signin() {
             history.push('/home')
 
         } catch (e) {
-            alert('Erro, tente novamente')
+            alert('Erro, tente novamente', e)
         }
     }
 
     return (
         <div>
+            <div className="back"/>
             <Container>
                 <section className="form">
-                    <form onClick={handleLogin}>
+                    <form>
                         <img src={logo} alt="logotipo" />
                         <h1>Faça seu login</h1>
-
+                            <h3>E-mail:</h3>
                         <input
-                            placeholder="digite seu email"
                             value={email}
                             onChange={e => setEmail(e.target.value)}
                         />
+                         <h3>Senha:</h3>
                         <input
-                            placeholder="digite sua senha"
                             value={senha}
                             onChange={e => setSenha(e.target.value)}
                         />
 
-                        <button className="button" type="submit">Entrar</button>
+                        <button className="button" type="submit" onClick={handleLogin}>Entrar</button>
 
                         <Link className="link" to="/signup">
+                        <FiLogIn size={16} color="#000" />
                             Não tenho cadastro
                         </Link>
                     </form>

@@ -22,7 +22,7 @@ export default function NewTasks() {
     async function handleTasks(e) {
         e.preventDefault()
 
-        if(!setTitle.length == [0]){
+        if(!setTitle.length === [0]){
             console.log("digite title")
         }
 

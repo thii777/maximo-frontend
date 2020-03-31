@@ -12,7 +12,6 @@ export default createGlobalStyle`
   }
   body {
     -webkit-font-smoothing: antialiased;
-    background: #d6d6d6;
     font-family: Montserrat, sans-serif;
   }
   body, input, button {
@@ -60,4 +59,15 @@ export default createGlobalStyle`
       color: #333;
       margin-top: 5px;
     }
+      .back {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top:0;
+    background: url('https://live.mrf.io/statics/i/ps/amenteemaravilhosa.com.br/wp-content/uploads/2018/04/como-ajudar-a-um-idoso-que-esta-triste.jpg');
+    background-size: 100% 100%;
+    background-position: center;
+    opacity: 0.5;
+    z-index: -9999;
+  }
 `;
