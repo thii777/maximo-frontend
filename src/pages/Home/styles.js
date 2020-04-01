@@ -25,7 +25,8 @@ export const Container = styled.header`
             margin-left: auto;
             padding-top: 10px
         }
-
+ 
+    
         .logout {
             color: red;
             margin-left: 5px;
@@ -39,10 +40,23 @@ export const Tasks = styled.div`
         padding: 0 30px;
         margin: 32px auto;
 
-    h1 {
+        h1 {
         margin-top: 80px;
         margin-bottom: 24px;
     }
+    .header-tasks{
+        display:flex;
+        justify-content: flex-end;
+        align-items: center;
+        h4 {
+            cursor:pointer;
+            margin: -70px 20px 0 0 ;
+        }
+        h4:hover {
+            text-decoration: underline;
+        }
+    }
+
 
     ul {
         display: grid;

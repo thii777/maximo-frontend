@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import { Container, Tasks } from './styles';
 import api from '../../services/api';
@@ -9,12 +9,32 @@ export default function MyTasks() {
   const [tasks, setTasks] = useState([]);
   const userId = localStorage.userId;
   const userName = localStorage.userName;
+  const [count, setCount] = useState(1);
+
+  const history = useHistory();
 
   useEffect(() => {
     api.get('tasks').then(response => {
       setTasks(response.data);
     });
   }, []);
+
+  function NextPage() {
+    setCount(count + 1);
+    history.push(`/home?page=${count}`);
+  }
+
+  function BackPage() {
+    setCount(count - 1);
+    history.push(`/home?page=${count}`);
+    if (count < 0) {
+      alert('Não é possivel mais voltar paginas');
+      history.push(`/home`);
+      setCount(1);
+
+      return;
+    }
+  }
 
   const allName = userName.split(' ');
   const firstName = allName[0];
@@ -36,7 +56,11 @@ export default function MyTasks() {
       </Container>
 
       <Tasks>
-        <h1>Ajude, Somos o máximo!</h1>
+          <h1>Ajude, Somos o máximo!</h1>
+        <div className="header-tasks">
+          <h4 onClick={BackPage}>Anterior</h4>
+          <h4 onClick={NextPage}>Proxima</h4>
+        </div>
         <ul>
           {tasks.map(task => (
             <li key={userId}>
