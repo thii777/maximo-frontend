@@ -11,6 +11,8 @@ export default function Signup() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+  const [message, setMessage] = useState('')
+  const [status, setStatus] = useState('')
 
   const history = useHistory();
 
@@ -26,10 +28,18 @@ export default function Signup() {
     try {
       const response = await api.post('users', data);
       alert(response.data.id);
+      setTimeout(() => {
+        history.push('/');
+      }, 3000)
 
-      history.push('/');
-    } catch (e) {
-      console.error(e.message);
+      setMessage("Cadastrado com sucesso");
+      setStatus('success')
+      handleClick()
+
+    } catch {
+      setStatus('error')
+      setMessage("Error")
+      handleClick()
     }
   }
   function Alert(props) {
@@ -45,66 +55,69 @@ export default function Signup() {
     }
   }));
 
- 
-    const classes = useStyles();
-    const [open, setOpen] = React.useState(false);
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
 
-    const handleClick = () => {
-      setOpen(true);
-    };
+  const handleClick = () => {
+    setOpen(true);
+  };
 
-    const handleClose = (event, reason) => {
-      if (reason === 'clickaway') {
-        return;
-      }
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
 
-      setOpen(false);
-    };
+    setOpen(false);
+  };
 
-    return (
-      <div>
-        <Container>
-          <section className='form'>
-            <form onSubmit={handleRegister}>
-              <img src={logo} alt='logotipo' />
-              <h1>Faça seu cadastro</h1>
+  return (
+    <div>
+      <Container>
+        <section className='form'>
+          <form onSubmit={handleRegister}>
+            <img src={logo} alt='logotipo' />
+            <h1>Faça seu cadastro</h1>
 
-              <input
-                placeholder='Digite seu nome completo'
-                value={name}
-                onChange={e => setName(e.target.value)}
-              />
+            <input
+              placeholder='Digite seu nome completo'
+              value={name}
+              onChange={e => setName(e.target.value)}
+            />
 
-              <input
-                placeholder='digite seu email'
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-              />
+            <input
+              placeholder='digite seu email'
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+            />
 
-              <input
-                placeholder='digite sua senha'
-                value={senha}
-                onChange={e => setSenha(e.target.value)}
-              />
+            <input
+              placeholder='digite sua senha'
+              value={senha}
+              onChange={e => setSenha(e.target.value)}
+            />
 
-              <button className='button' onClick={handleClick} type='submit'>
-                Enviar
-              </button>
-        <div className={classes.root}>
-      <Snackbar anchorOrigin={{ vertical:'top', horizontal:'center' }} open={open} autoHideDuration={3000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="success">
-          Cadastro efetuado com sucesso!
-        </Alert>
-      </Snackbar>
-      </div>
+            <button className='button' type='submit'>
+              Enviar
+            </button>
+            <div className={classes.root}>
+              <Snackbar
+                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                open={open}
+                autoHideDuration={3000}
+                onClose={handleClose}
+              >
+                <Alert onClose={handleClose} severity={status}>
+                  {message}
+                </Alert>
+              </Snackbar>
+            </div>
 
-              <Link className='link' to='/'>
-                Ja tenho cadastro
-              </Link>
-            </form>
-          </section>
-        </Container>
-      </div>
-    );
-  }
-
+            <Link className='link' to='/'>
+              Ja tenho cadastro
+            </Link>
+          </form>
+        </section>
+      </Container>
+    </div>
+  );
+}
