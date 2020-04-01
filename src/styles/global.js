@@ -13,6 +13,7 @@ export default createGlobalStyle`
   body {
     -webkit-font-smoothing: antialiased;
     font-family: Montserrat, sans-serif;
+    background: #D3D3D3;
   }
   body, input, button {
       font-size: 14px Roboto, sans-serif;
@@ -59,7 +60,8 @@ export default createGlobalStyle`
       color: #333;
       margin-top: 5px;
     }
-      .back {
+    
+    .back {
     width: 100%;
     height: 100%;
     position: fixed;

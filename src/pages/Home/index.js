@@ -25,7 +25,7 @@ export default function MyTasks() {
                 <div className="cards">
                     <header>
                         <img src={logo} alt="logotipo" />
-                        <span>Olá {firstName}</span>
+                        <span>Olá, {firstName}</span>
 
                         <Link to="/mytasks">Meus pedidos</Link>
                         <Link className="logout" to="/">Sair</Link>

@@ -13,7 +13,7 @@ export const Container = styled.section`
     height: 430px;
     margin: 10% auto;
     border: 1px solid #4f4f4f;
-    background-color: rgba(120, 120, 150, 0.3);
+    background-color: rgba(120, 120, 150, 0.5);
     box-shadow: 0px 0px 5px black;
 
     img {
@@ -34,11 +34,24 @@ export const Container = styled.section`
       margin-top: 10px;
       width: 100%;
       max-width: 350px;
-      text-align: center;
+    }
+
+    .eye {
+      position: absolute;
+      top: 10;
+      right: 10;
+      margin-top: 66px;
+      margin-left: 96px;
+      cursor: pointer;
+      transition: 0.2s ease-out;
+    }
+    .eye:hover {
+      opacity: 0.5;
     }
     button {
-      width: 100%;
+      width: 70%%;
       max-width: 350px;
+      margin-top: 20px;
       transition: 0.2s;
     }
     h3 {
@@ -47,6 +60,8 @@ export const Container = styled.section`
 
     .link:hover {
         text-decoration: underline;
+    }
+
     }
 
     button:hover {

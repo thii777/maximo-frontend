@@ -6,13 +6,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Container } from './styles';
 import api from '../../services/api';
 import logo from '../../assets/logo.png';
+import { FiLogIn } from 'react-icons/fi';
 
 export default function Signup() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
-  const [message, setMessage] = useState('')
-  const [status, setStatus] = useState('')
+  const [message, setMessage] = useState('');
+  const [status, setStatus] = useState('');
 
   const history = useHistory();
 
@@ -30,16 +31,15 @@ export default function Signup() {
       alert(response.data.id);
       setTimeout(() => {
         history.push('/');
-      }, 3000)
+      }, 3000);
 
-      setMessage("Cadastrado com sucesso");
-      setStatus('success')
-      handleClick()
-
-    } catch {
-      setStatus('error')
-      setMessage("Error")
-      handleClick()
+      setMessage('Cadastrado com sucesso');
+      setStatus('success');
+      handleClick();
+    } catch (e) {
+      setStatus('error');
+      setMessage(e.message);
+      handleClick();
     }
   }
   function Alert(props) {
@@ -77,21 +77,22 @@ export default function Signup() {
           <form onSubmit={handleRegister}>
             <img src={logo} alt='logotipo' />
             <h1>Faça seu cadastro</h1>
-
+            <h3>Nome:</h3>
             <input
-              placeholder='Digite seu nome completo'
+              placeholder='Digite seu nome'
               value={name}
               onChange={e => setName(e.target.value)}
             />
-
+            <h3>E-mail:</h3>
             <input
-              placeholder='digite seu email'
+              placeholder='Digite seu e-mail'
               value={email}
               onChange={e => setEmail(e.target.value)}
             />
-
+            <h3>Senha:</h3>
             <input
-              placeholder='digite sua senha'
+              type='password'
+              placeholder='Digite sua senha'
               value={senha}
               onChange={e => setSenha(e.target.value)}
             />
@@ -113,6 +114,7 @@ export default function Signup() {
             </div>
 
             <Link className='link' to='/'>
+              <FiLogIn size={15} color='black'></FiLogIn>
               Ja tenho cadastro
             </Link>
           </form>
