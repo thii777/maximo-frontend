@@ -34,11 +34,23 @@ form {
       width: 100%;
       max-width: 350px;
     }
+    .eye {
+      position: absolute;
+      top: 10;
+      right: 10;
+      margin-top: 90px;
+      margin-left: 96px;
+      cursor: pointer;
+      transition: 0.2s ease-out;
+    }
+    .eye:hover {
+      opacity: 0.5;
+    }
     button {
-      width: 100%;
+      width: 70%;
       max-width: 350px;
+      margin-top: 20px;
       transition: 0.2s;
-      margin-top: 15px;
     }
     h3 {
         margin-top: 5px;

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiLogIn, FiEye, FiEyeOff } from 'react-icons/fi';
 import TextField from '@material-ui/core/TextField';
-
 import { Container } from './styles';
 import api from '../../services/api';
 import logo from '../../assets/logo.png';

@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 export const Container = styled.section`
   form {
     display: flex;
@@ -49,7 +48,7 @@ export const Container = styled.section`
       opacity: 0.5;
     }
     button {
-      width: 70%%;
+      width: 70%;
       max-width: 350px;
       margin-top: 20px;
       transition: 0.2s;
