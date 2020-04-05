@@ -4,12 +4,17 @@ import { Link, useHistory } from 'react-router-dom';
 import { Container, Tasks } from './styles';
 import api from '../../services/api';
 import logo from '../../assets/logo.png';
+import { Snackbar } from '@material-ui/core';
+import MuiAlert from '@material-ui/lab/Alert';
 
 export default function MyTasks() {
   const [tasks, setTasks] = useState([]);
   const userId = localStorage.userId;
   const userName = localStorage.userName;
   const [count, setCount] = useState(1);
+  const [message, setMessage] = useState('');
+  const [status, setStatus] = useState('');
+  const [open, setOpen] = useState(false);
 
   const history = useHistory();
 
@@ -18,6 +23,18 @@ export default function MyTasks() {
       setTasks(response.data);
     });
   }, []);
+
+
+  function Refresh() {
+    setTimeout(()=> {
+      setOpen(false)
+      localStorage.clear()
+      history.push('/')
+    },3000)
+    setMessage('Até Logo')
+    setStatus('success')
+    setOpen(true)
+  }
 
   function NextPage() {
     setCount(count + 1);
@@ -28,17 +45,22 @@ export default function MyTasks() {
     setCount(count - 1);
     history.push(`/home?page=${count}`);
     if (count < 0) {
-      alert('Não é possivel mais voltar paginas');
-      history.push(`/home`);
+      setMessage('Não possivel voltar mais páginas')
+      setStatus('error')
+      setOpen(true)
       setCount(1);
+      setTimeout(() => {
 
+      history.push(`/home`);
+      setOpen(false)
+      }, 3000)
       return;
     }
   }
 
   const allName = userName.split(' ');
   const firstName = allName[0];
-
+try{
   return (
     <div>
       <Container>
@@ -47,8 +69,8 @@ export default function MyTasks() {
             <img src={logo} alt='logotipo' />
             <span>Olá, {firstName}</span>
 
-            <Link to='/mytasks'>Meus pedidos</Link>
-            <Link className='logout' to='/'>
+            <Link  to='/mytasks'>Meus pedidos</Link>
+            <Link className='logout' onClick={Refresh}>
               Sair
             </Link>
           </header>
@@ -87,7 +109,15 @@ export default function MyTasks() {
             </li>
           ))}
         </ul>
+        <Snackbar  open={open} anchorOrigin={{vertical: 'top', horizontal: 'center'}}>
+        <MuiAlert  severity={status} elevation={6} variant="filled"> {message} </MuiAlert>
+        </Snackbar>
+        
+        severity={status} 
       </Tasks>
     </div>
   );
+}catch(err) {
+  alert(err.message)
+}
 }
