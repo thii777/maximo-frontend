@@ -5,6 +5,8 @@ import TextField from '@material-ui/core/TextField';
 import { Container } from './styles';
 import api from '../../services/api';
 import logo from '../../assets/logo.png';
+import { Snackbar } from '@material-ui/core';
+import MuiAlert from '@material-ui/lab/Alert';
 
 export default function Signin() {
   const [email, setEmail] = useState();
@@ -12,19 +14,18 @@ export default function Signin() {
   const [type, setType] = useState('password');
   const [eye, setEye] = useState('block');
   const [eyeOff, setEyeOff] = useState('none');
+  const [message, setMessage] = useState('');
+  const [status, setStatus] = useState('');
+  const [open, setOpen] = useState(false);
 
   const history = useHistory();
 
   async function handleLogin(e) {
     e.preventDefault();
 
-    if (!setEmail.length === [0]) {
-      console.log('digite email e senha');
-    }
-
     let data = {
       email,
-      senha
+      senha,
     };
 
     try {
@@ -34,7 +35,15 @@ export default function Signin() {
 
       history.push('/home');
     } catch (e) {
-      alert(e.message);
+      setTimeout(() => {
+
+        setOpen(false);
+      }, 3000);
+
+      setOpen(true);
+      console.error(e.message)
+      setMessage('Usuário não cadastrado!');
+      setStatus('error');
     }
   }
 
@@ -64,7 +73,7 @@ export default function Signin() {
             <TextField
               label='E-mail'
               value={email}
-              onChange={e => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
             <TextField
@@ -72,7 +81,7 @@ export default function Signin() {
               className='password'
               type={type}
               value={senha}
-              onChange={e => setSenha(e.target.value)}
+              onChange={(e) => setSenha(e.target.value)}
               required
             />
             <FiEye
@@ -98,6 +107,15 @@ export default function Signin() {
               Não tenho cadastro
             </Link>
           </form>
+          <Snackbar
+            open={open}
+            anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+          >
+            <MuiAlert severity={status} elevation={6} variant='filled'>
+              {' '}
+              {message}
+            </MuiAlert>
+          </Snackbar>
         </section>
       </Container>
     </div>

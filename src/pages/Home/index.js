@@ -19,105 +19,115 @@ export default function MyTasks() {
   const history = useHistory();
 
   useEffect(() => {
-    api.get('tasks').then(response => {
+    api.get('tasks').then((response) => {
       setTasks(response.data);
     });
   }, []);
 
-
   function Refresh() {
-    setTimeout(()=> {
-      setOpen(false)
-      localStorage.clear()
-      history.push('/')
-    },3000)
-    setMessage('Até Logo')
-    setStatus('success')
-    setOpen(true)
+    setTimeout(() => {
+      setOpen(false);
+      localStorage.clear();
+      history.push('/');
+    }, 3000);
+    setMessage('Até Logo');
+    setStatus('success');
+    setOpen(true);
   }
 
   function NextPage() {
     setCount(count + 1);
-    history.push(`/home?page=${count}`);
+    api.get(`/tasks?page=${count}`).then((Next) => {
+      setTasks(Next.data);
+      if (Next.data.length < 6) {
+        setCount(1);
+      }
+    });
   }
 
   function BackPage() {
     setCount(count - 1);
-    history.push(`/home?page=${count}`);
-    if (count < 0) {
-      setMessage('Não possivel voltar mais páginas')
-      setStatus('error')
-      setOpen(true)
+    api.get(`/tasks?page=${count}`).then((Back) => {
+      setTasks(Back.data);
+    });
+
+    if (count < 1) {
+      setMessage('Não é possivel voltar mais páginas');
+      setStatus('error');
+      setOpen(true);
       setCount(1);
       setTimeout(() => {
-
-      history.push(`/home`);
-      setOpen(false)
-      }, 3000)
+        history.push(`/home`);
+        setOpen(false);
+      }, 3000);
       return;
     }
   }
 
   const allName = userName.split(' ');
   const firstName = allName[0];
-try{
-  return (
-    <div>
-      <Container>
-        <div className='cards'>
-          <header>
-            <img src={logo} alt='logotipo' />
-            <span>Olá, {firstName}</span>
+  try {
+    return (
+      <div>
+        <Container>
+          <div className='cards'>
+            <header>
+              <img src={logo} alt='logotipo' />
+              <span>Olá, {firstName}</span>
 
-            <Link  to='/mytasks'>Meus pedidos</Link>
-            <Link className='logout' onClick={Refresh}>
-              Sair
-            </Link>
-          </header>
-        </div>
-      </Container>
+              <Link to='/mytasks'>Meus pedidos</Link>
+              <Link className='logout' onClick={Refresh}>
+                Sair
+              </Link>
+            </header>
+          </div>
+        </Container>
 
-      <Tasks>
+        <Tasks>
           <h1>Ajude, Somos o máximo!</h1>
-        <div className="header-tasks">
-          <h4 onClick={BackPage}>Anterior</h4>
-          <h4 onClick={NextPage}>Proxima</h4>
-        </div>
-        <ul>
-          {tasks.map(task => (
-            <li key={userId}>
-              <div className='data'>
-                <div>
-                  <strong>Nome</strong>
-                  <p>{task.name}</p>
+          <div className='header-tasks'>
+            <h4 onClick={BackPage}>Anterior</h4>
+            <h4 onClick={NextPage}>Proxima</h4>
+          </div>
+          <ul>
+            {tasks.map((task) => (
+              <li key={userId}>
+                <div className='data'>
+                  <div>
+                    <strong>Nome</strong>
+                    <p>{task.name}</p>
+                  </div>
+                  <strong className='tower'>torre 2</strong>
                 </div>
-                <strong className='tower'>torre 2</strong>
-              </div>
-              <div className='box'>
-                <strong>Titulo</strong>
-                <p>{task.title}</p>
+                <div className='box'>
+                  <strong>Titulo</strong>
+                  <p>{task.title}</p>
 
-                <strong>O que você precisa?</strong>
-                <p>{task.description}</p>
+                  <strong>O que você precisa?</strong>
+                  <p>{task.description}</p>
 
-                {/* <span>Contato</span> */}
-                <div className='contact'>
-                  <button className='whatsapp'>whatsapp</button>
-                  <button className='email'>email</button>
+                  {/* <span>Contato</span> */}
+                  <div className='contact'>
+                    <button className='whatsapp'>whatsapp</button>
+                    <button className='email'>email</button>
+                  </div>
                 </div>
-              </div>
-            </li>
-          ))}
-        </ul>
-        <Snackbar  open={open} anchorOrigin={{vertical: 'top', horizontal: 'center'}}>
-        <MuiAlert  severity={status} elevation={6} variant="filled"> {message} </MuiAlert>
-        </Snackbar>
-        
-        severity={status} 
-      </Tasks>
-    </div>
-  );
-}catch(err) {
-  alert(err.message)
-}
+              </li>
+            ))}
+          </ul>
+          <Snackbar
+            open={open}
+            anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+          >
+            <MuiAlert severity={status} elevation={6} variant='filled'>
+              {' '}
+              {message}{' '}
+            </MuiAlert>
+          </Snackbar>
+        </Tasks>
+      </div>
+    );
+  } catch (err) {
+    alert(err.message);
+  }
 }
