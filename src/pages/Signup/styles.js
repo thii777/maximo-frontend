@@ -10,7 +10,7 @@ form {
     justify-content: center;
     padding: 10px;
     height: 500px;
-    margin: 10% auto;
+    margin: 5% auto;
     border: 1px solid #4f4f4f;
     background-color: rgba(120, 120, 150, 0.3);
     box-shadow: 0px 0px 5px black;

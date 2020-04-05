@@ -8,6 +8,7 @@ import MyTasks from './pages/MyTasks'
 import NewTasks from './pages/NewTasks'
 import Home from './pages/Home'
 
+
 function Routes(){
     return (
        <BrowserRouter>
@@ -16,7 +17,7 @@ function Routes(){
              <Route path="/signup" component={Signup}/>
              <Route path="/mytasks" component={MyTasks}/>
              <Route path="/new" component={NewTasks}/>
-             <Route path="/home" component={Home}/>
+             <Route path="/home" component={Home}/>             
          </Switch>
        </BrowserRouter>
     )

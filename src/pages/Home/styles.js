@@ -22,14 +22,32 @@ export const Container = styled.header`
         }
 
         a {
-            margin-left: auto;
-            padding-top: 10px
+            width: 150px;
+            height: 40px;
+            background: #000;
+            /* background: linear-gradient(90deg,#00c4cc,#7d2ae8); */
+            border: 0;
+            border-radius: 8px;
+            color: #fff;
+            font-weight: 700;
+            padding-top: 10px;
+            margin: 0 0 0 auto;
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+            font-size: 18px;
+            align-items: center;
+            transition: filter 0.2s;
+            
+            :hover {
+                filter: brightness(80%)   
+            }
         }
- 
     
         .logout {
-            color: red;
+            color: white;
             margin-left: 5px;
+            background: red;
         }
     }
 `;

@@ -27,19 +27,19 @@ export default function Signup() {
     const data = {
       name,
       email,
-      senha
+      senha,
     };
 
     try {
-      const response = await api.post('users', data);
-      alert(response.data.id);
+      await api.post('users', data);
       setTimeout(() => {
         history.push('/');
       }, 3000);
-
+      
       setMessage('Cadastrado com sucesso');
       setStatus('success');
       handleClick();
+
     } catch (e) {
       setStatus('error');
       setMessage(e.message);
@@ -49,7 +49,7 @@ export default function Signup() {
   function Alert(props) {
     return <MuiAlert elevation={6} variant='filled' {...props} />;
   }
-    function ocultPassword() {
+  function ocultPassword() {
     setType('password');
     setEye('block');
     setEyeOff('none');
@@ -64,13 +64,13 @@ export default function Signup() {
     }
   }
 
-  const useStyles = makeStyles(theme => ({
+  const useStyles = makeStyles((theme) => ({
     root: {
       width: '100%',
       '& > * + *': {
-        marginTop: theme.spacing(2)
-      }
-    }
+        marginTop: theme.spacing(2),
+      },
+    },
   }));
 
   const classes = useStyles();
@@ -99,7 +99,7 @@ export default function Signup() {
               label='Nome'
               placeholder='Digite seu nome'
               value={name}
-              onChange={e => setName(e.target.value)}
+              onChange={(e) => setName(e.target.value)}
               required
             />
             <TextField
@@ -107,7 +107,7 @@ export default function Signup() {
               required
               placeholder='Digite seu e-mail'
               value={email}
-              onChange={e => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <TextField
               label='Senha'
@@ -115,7 +115,7 @@ export default function Signup() {
               required
               placeholder='Digite sua senha'
               value={senha}
-              onChange={e => setSenha(e.target.value)}
+              onChange={(e) => setSenha(e.target.value)}
             />
             <FiEye
               display={eye}
