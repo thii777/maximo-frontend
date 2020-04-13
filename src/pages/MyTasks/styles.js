@@ -29,7 +29,7 @@ export const Container = styled.header`
             /* margin-bottom: 30px;  */
         }
         a {
-            width: 150px;
+            width: 250px;
             height: 40px;
             background: #000;
             /* background: linear-gradient(90deg,#00c4cc,#7d2ae8); */

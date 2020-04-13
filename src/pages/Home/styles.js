@@ -91,7 +91,11 @@ export const Tasks = styled.div`
         align-items: center;
         h4 {
             cursor:pointer;
-            margin: 0 auto;
+            margin: -70px 20px 0 0 ;
+            @media (max-width: 600px) 
+            {
+                margin: 0 auto;
+            } 
         }
         h4:hover {
             text-decoration: underline;
