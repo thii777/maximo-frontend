@@ -45,9 +45,9 @@ export default function MyTasks() {
             <img src={logo} alt='logotipo' />
             <span>Olá {firstName}</span>
 
-            <Link to='/new'>Cadastrar uma nova ajuda</Link>
+            <Link to='/new'>Cadastrar ajuda</Link>
             <Link className='logout' to='/home'>
-              voltar
+              Voltar
             </Link>
           </header>
         </div>

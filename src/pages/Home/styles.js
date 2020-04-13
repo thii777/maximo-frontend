@@ -10,11 +10,20 @@ export const Container = styled.header`
         header {
         display: flex;
         align-items: center;
+
         }
 
         span {
             font-size: 20px;
             margin-left: 20px;
+            @media(max-width: 600px) {
+                
+                    width: 600px;
+                    margin: 0 auto;
+                    font-size: 20px;
+                    margin-left: 10px;
+                
+            }
         }
 
         img {
@@ -38,6 +47,14 @@ export const Container = styled.header`
             font-size: 18px;
             align-items: center;
             transition: filter 0.2s;
+
+            @media (max-width: 600px) 
+            {
+            font-size: 10px;
+            width:200px;
+            margin-right: 10px;
+              
+            } 
             
             :hover {
                 filter: brightness(80%)   
@@ -61,6 +78,12 @@ export const Tasks = styled.div`
         h1 {
         margin-top: 80px;
         margin-bottom: 24px;
+        @media (max-width: 600px) 
+        {
+        font-size: 20px;
+        margin-top:40px;  
+        text-align: center;
+        } 
     }
     .header-tasks{
         display:flex;
@@ -68,7 +91,7 @@ export const Tasks = styled.div`
         align-items: center;
         h4 {
             cursor:pointer;
-            margin: -70px 20px 0 0 ;
+            margin: 0 auto;
         }
         h4:hover {
             text-decoration: underline;
@@ -81,6 +104,13 @@ export const Tasks = styled.div`
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 24px;
         list-style: none;
+
+        @media (max-width: 600px) 
+        {
+            display: flex;
+            flex-direction: column;
+          
+        } 
 
         li {
             background: #fff;
@@ -116,6 +146,12 @@ export const Tasks = styled.div`
                 :hover {
                     opacity: 0.8;   
                 }
+
+                @media (max-width: 600px) 
+                {
+                width: 100%;
+                  
+                } 
             }
 
             button.whatsapp {
@@ -125,6 +161,12 @@ export const Tasks = styled.div`
             button.email {
                     background: #00b;
                     margin-left: 5px;
+                    @media (max-width: 600px) 
+                    {
+                    margin-left: 0;
+                      
+                    } 
+                    
             }
 
             strong {

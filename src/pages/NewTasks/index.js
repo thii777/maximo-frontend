@@ -68,7 +68,6 @@ export default function NewTasks() {
           <header>
             <div className='logo'>
               <img src={logo} alt='logotipo' />
-              <p>Somos o máximo</p>
             </div>
             <span>Olá {firstName}</span>
 
