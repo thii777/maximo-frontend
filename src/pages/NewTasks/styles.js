@@ -12,11 +12,11 @@ export const Container = styled.header`
 
       img {
         margin-left: 30px;
+        @media(max-width: 600px){
+          margin: 0;
+        }
       }
 
-      p {
-        text-align: left;
-      }
     }
 
     header {
@@ -26,6 +26,10 @@ export const Container = styled.header`
 
     span {
       font-size: 20px;
+      @media(max-width: 600px){
+        width: 100%;
+        margin: 0 auto;
+      }
     }
 
     a {
@@ -44,6 +48,13 @@ export const Container = styled.header`
       font-size: 18px;
       align-items: center;
       transition: filter 0.2s;
+      @media (max-width: 600px) 
+      {
+      font-size: 12px;
+      width: 100px;;
+      margin-right: 5px;
+        
+      } 
 
       :hover {
         filter: brightness(80%);
@@ -61,6 +72,12 @@ export const Tasks = styled.div`
   h1 {
     margin-top: 80px;
     margin-bottom: 24px;
+    @media (max-width: 600px) 
+    {
+    font-size: 20px;
+    margin-top:40px;  
+    text-align: center;
+    } 
   }
 
   ul {
@@ -68,6 +85,12 @@ export const Tasks = styled.div`
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 24px;
     list-style: none;
+    @media (max-width: 600px) 
+    {
+      display:flex;
+      flex-direction: column;
+      border: 1px solid black;
+    } 
 
     li {
       display: flex;
@@ -97,8 +120,8 @@ export const Tasks = styled.div`
       }
 
       button {
-        width: 100px;
-        height: 20px;
+        width: 100%;
+        height: 30px;
         background: #00c4cc;
         /* background: linear-gradient(90deg,#00c4cc,#7d2ae8); */
         border: 0;

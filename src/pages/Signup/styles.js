@@ -15,13 +15,30 @@ form {
     background-color: rgba(120, 120, 150, 0.3);
     box-shadow: 0px 0px 5px black;
 
+    @media (max-width: 600px) 
+    {
+      border: none;
+      background: none;
+      box-shadow: none;
+      
+    } 
+
     img {
       margin-bottom: 30px;
     }
 
+    .MuiFormControl-root {
+      border: 0;
+      margin: 0;
+      display: inline-flex;
+      padding: 0;
+      position: relative;
+      width: 80%;
+      }
+
     h1 {
       margin-bottom: 10px;
-      font-size: 25px;
+      font-size: 22px;
       color: #333;
       width: 100%;
       max-width: 350px;
@@ -47,7 +64,7 @@ form {
       opacity: 0.5;
     }
     button {
-      width: 70%;
+      width: 80%;
       max-width: 350px;
       margin-top: 20px;
       transition: 0.2s;

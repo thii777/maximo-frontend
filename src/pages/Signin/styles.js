@@ -10,14 +10,29 @@ export const Container = styled.section`
     justify-content: center;
     padding: 10px;
     height: 430px;
-    margin: 5% auto;
+    margin: 10% auto;
     border: 1px solid #4f4f4f;
     background-color: rgba(120, 120, 150, 0.5);
     box-shadow: 0px 0px 5px black;
+    @media (max-width: 600px) 
+      {
+        border: none;
+        background: none;
+        box-shadow: none;
+        
+      }
 
     img {
       margin-bottom: 30px;
     }
+    .MuiFormControl-root {
+      border: 0;
+      margin: 0;
+      display: inline-flex;
+      padding: 0;
+      position: relative;
+      width: 80%;
+      }
 
     h1 {
       margin-bottom: 10px;
@@ -48,7 +63,7 @@ export const Container = styled.section`
       opacity: 0.5;
     }
     button {
-      width: 70%;
+      width: 80%;
       max-width: 350px;
       margin-top: 20px;
       transition: 0.2s;
@@ -72,6 +87,7 @@ export const Container = styled.section`
       align-items: center;
     }
   }
+
 `;
 
 // background-image: url(https://www.dicasdemulher.com.br/wp-content/uploads/2012/01/diferentes-maneiras-de-ser-solidario.jpg)

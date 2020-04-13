@@ -1,22 +1,23 @@
 const { createGlobalStyle } = require('styled-components');
 
 export default createGlobalStyle`
-    @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-    @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
-  * {
-    margin: 0;
-    padding: 0;
-    outline: 0;
-    box-sizing: border-box;
-  }
-  body {
-    -webkit-font-smoothing: antialiased;
-    font-family: Montserrat, sans-serif;
-    background: #D3D3D3;
-  }
-  body, input, button {
-      font-size: 14px Roboto, sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  font-family: Montserrat, sans-serif;
+  background: #fff;
+}
+body, input, button {
+  font-size: 14px Roboto, sans-serif;
+
   }
   #root {
       margin: 0 auto;
@@ -71,5 +72,11 @@ export default createGlobalStyle`
     background-position: center;
     opacity: 0.5;
     z-index: -9999;
+    @media (max-width: 600px) 
+    {
+      background: none;
+     }
   }
+
+  
 `;
