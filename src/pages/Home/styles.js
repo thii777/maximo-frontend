@@ -94,7 +94,7 @@ export const Tasks = styled.div`
             margin: -70px 20px 0 0 ;
             @media (max-width: 600px) 
             {
-                margin: 0 auto;
+                margin: 1% auto;
             } 
         }
         h4:hover {
@@ -121,6 +121,10 @@ export const Tasks = styled.div`
             padding: 24px;
             border-radius: 8px;
             position: relative;
+            @media(max-width: 600px){
+                margin: 5px 0 5px 0 ;
+                min-height: 350px;
+            }
 
             .data {
                 display: flex;
@@ -187,6 +191,10 @@ export const Tasks = styled.div`
                 line-height: 21px;
                 font-size: 16px;
                 margin-bottom: 5px;
+                @media (max-width: 600px) 
+                {
+                    margin: 10px auto;
+                } 
             }
         }
     }

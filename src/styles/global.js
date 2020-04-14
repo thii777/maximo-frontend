@@ -13,7 +13,7 @@ export default createGlobalStyle`
 body {
   -webkit-font-smoothing: antialiased;
   font-family: Montserrat, sans-serif;
-  background: #fff;
+  background: #ccc;
 }
 body, input, button {
   font-size: 14px Roboto, sans-serif;
